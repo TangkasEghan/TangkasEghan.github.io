@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tangkas Eghan Pramudipta — AI Trainer &amp; Medical Data Specialist</title>
+  <meta name="description" content="Medical graduate (UGM, GPA 3.96) evaluating, annotating and red-teaming AI outputs with clinical accuracy and bilingual Indonesian–English precision." />
+  <meta name="theme-color" content="#050B1A" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tangkas Eghan Pramudipta — AI Trainer & Medical Data Specialist" />
+  <meta property="og:description" content="I help AI give health answers people can trust." />
+  <meta property="og:image" content="assets/img/portrait.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23050B1A'/%3E%3Cpath d='M18 33l9 9 19-20' fill='none' stroke='%234DD8FF' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Tangkas Eghan Pramudipta",
+    "jobTitle": "AI Trainer & Medical Data Specialist",
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Universitas Gadjah Mada" },
+    "knowsLanguage": ["id", "en"],
+    "email": "mailto:tangkaseghan12@gmail.com",
+    "address": { "@type": "PostalAddress", "addressLocality": "Yogyakarta", "addressCountry": "ID" }
+  }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body class="is-loading">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Global layers -->
+  <div class="grain" aria-hidden="true"></div>
+  <div class="progress" aria-hidden="true"><span></span></div>
+  <div class="cursor" aria-hidden="true"><span class="cursor__dot"></span><span class="cursor__ring"><em class="cursor__label"></em></span></div>
+  <div class="toast" role="status" aria-live="polite"></div>
+
+  <!-- 00 Preloader -->
+  <div class="preloader" aria-hidden="true">
+    <div class="preloader__grid"></div>
+    <div class="preloader__inner">
+      <p class="mono preloader__label">Calibrating rubric<span class="blink">_</span></p>
+      <p class="preloader__count"><span class="js-count">000</span><small>/100</small></p>
+      <div class="preloader__bar"><span></span></div>
+      <ul class="mono preloader__checks">
+        <li>Accuracy</li><li>Safety</li><li>Completeness</li><li>Clarity</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 01 Navigation -->
+  <header class="nav" data-nav>
+    <a href="#top" class="nav__brand" data-scroll-to aria-label="Back to top">
+      <span class="nav__mark">✓</span>
+      <span class="nav__name">Tangkas&nbsp;E.&nbsp;Pramudipta</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#mission" data-scroll-to><i>01</i>Mission</a>
+      <a href="#pillars" data-scroll-to><i>02</i>Work</a>
+      <a href="#story" data-scroll-to><i>03</i>Story</a>
+      <a href="#credentials" data-scroll-to><i>04</i>Credentials</a>
+      <a href="#evidence" data-scroll-to><i>05</i>Evidence</a>
+    </nav>
+    <a href="#contact" class="nav__cta" data-scroll-to data-magnetic>Contact</a>
+  </header>
+
+  <main id="main">
+
+    <!-- 02 Hero -->
+    <section class="hero" id="top" aria-label="Introduction">
+      <div class="hero__stage">
+        <canvas class="hero__canvas" aria-hidden="true"></canvas>
+        <div class="hero__vignette" aria-hidden="true"></div>
+        <div class="grid-overlay" aria-hidden="true"></div>
+
+        <div class="hero__intro">
+          <p class="mono eyebrow" data-decode>AI Trainer · Medical Data Specialist · ID / EN</p>
+          <h1 class="display-xxl hero__title" data-split="lines">I help AI give health answers people can trust.</h1>
+          <p class="hero__sub">Medical graduate, Universitas Gadjah Mada. Evaluator, annotator and red-teamer of AI model outputs.</p>
+          <div class="hero__ctas">
+            <a class="btn btn--primary" href="assets/cv/Tangkas-Eghan-Pramudipta-CV.pdf" download data-cv data-magnetic data-cursor="Download"><span>Download CV</span><b>↓</b></a>
+            <a class="btn btn--ghost" href="#contact" data-scroll-to data-magnetic><span>Contact me</span><b>→</b></a>
+          </div>
+        </div>
+
+        <p class="hero__scene display-l" data-scene="1" aria-hidden="true">People ask AI about their&nbsp;health.</p>
+        <p class="hero__scene display-l" data-scene="2" aria-hidden="true">Every answer deserves a second&nbsp;opinion.</p>
+        <p class="hero__scene display-l" data-scene="3" aria-hidden="true">I make sure it's the right&nbsp;one.</p>
+
+        <div class="hero__lockup" aria-hidden="true">
+          <p class="mono">[ Reviewer ]</p>
+          <p class="hero__name">Tangkas Eghan Pramudipta</p>
+          <p class="mono hero__role">AI Trainer &amp; Medical Data Specialist</p>
+        </div>
+
+        <div class="hud mono" aria-hidden="true">
+          <p class="hud__scene">Scene <b class="js-scene-n">01</b>/03 — <span class="js-scene-name">Question</span></p>
+          <p class="hud__tc js-tc">00:00:00:00</p>
+          <div class="hud__track"><span class="js-hud-bar"></span></div>
+        </div>
+
+        <p class="hero__hint mono" aria-hidden="true">Scroll to review <span>↓</span></p>
+      </div>
+    </section>
+
+    <!-- 03 Stats strip -->
+    <section class="stats" aria-label="Key numbers">
+      <div class="stats__grid">
+        <div class="stat"><p class="stat__num" data-count="3.96" data-decimals="2">0</p><p class="stat__label mono">GPA / 4.00 · Bachelor of Medicine, UGM</p></div>
+        <div class="stat"><p class="stat__num" data-count="9">0</p><p class="stat__label mono">Systematic reviews &amp; meta-analyses</p></div>
+        <div class="stat"><p class="stat__num" data-count="19">0</p><p class="stat__label mono">Scientific works</p></div>
+        <div class="stat"><p class="stat__num" data-count="44">0</p><p class="stat__label mono">Research proposals reviewed with rubrics</p></div>
+        <div class="stat"><p class="stat__num" data-count="4">0</p><p class="stat__label mono">AI training platforms</p></div>
+        <div class="stat"><p class="stat__num" data-count="3">0</p><p class="stat__label mono">Anthropic Claude Academy certifications</p></div>
+        <div class="stat"><p class="stat__num" data-count="2" data-suffix="×">0</p><p class="stat__label mono">1st Place, scientific competitions 2026</p></div>
+      </div>
+      <div class="ticker mono" aria-hidden="true">
+        <div class="ticker__track">
+          <span>Medical AI evaluation ✓ Red teaming ✓ RLHF ✓ Rubric scoring ✓ Annotation ✓ Indonesian ⇄ English ✓ Evidence-based medicine ✓ PROSPERO-registered ✓&nbsp;</span>
+          <span>Medical AI evaluation ✓ Red teaming ✓ RLHF ✓ Rubric scoring ✓ Annotation ✓ Indonesian ⇄ English ✓ Evidence-based medicine ✓ PROSPERO-registered ✓&nbsp;</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 Mission -->
+    <section class="mission section" id="mission" aria-labelledby="mission-h">
+      <div class="grid-overlay grid-overlay--soft" aria-hidden="true"></div>
+      <p class="tag mono" data-decode>[ 01 / Mission ]</p>
+      <h2 id="mission-h" class="mission__text display-l" data-light>More people now ask AI about their health. That makes every answer a clinical moment. I make sure those answers are <em data-check>accurate,</em> <em data-check>safe,</em> and <em data-check>honest</em> about what they don't know.</h2>
+      <p class="mission__aside">Clinical knowledge plus rubric-based evaluation, so that AI answers can be trusted by the people who need them most.</p>
+    </section>
+
+    <!-- 05 Pillars -->
+    <section class="pillars" id="pillars" aria-labelledby="pillars-h">
+      <div class="pillars__pin">
+        <div class="pillars__track">
+          <div class="pillars__intro">
+            <p class="tag mono" data-decode>[ 02 / What I do ]</p>
+            <h2 id="pillars-h" class="display-l" data-split="lines">Three ways I make models better.</h2>
+            <p class="pillars__hint mono">Drag the scroll <span>→</span></p>
+          </div>
+
+          <article class="pillar" data-reveal>
+            <header class="pillar__head mono"><span>Pillar 01</span><span>Medical</span></header>
+            <h3 class="pillar__title">Medical AI Evaluation &amp; Annotation</h3>
+            <p class="pillar__body">I review AI health answers the way a clinician reviews a chart, checking facts, dosages, red-flag symptoms and the safety-netting advice a patient actually needs. Every judgment is backed by evidence-based medicine and written up clearly.</p>
+            <ul class="pillar__list mono"><li>Clinical accuracy</li><li>Safety &amp; escalation</li><li>Guideline alignment</li><li>Evidence grading</li></ul>
+            <div class="rubric">
+              <div class="rubric__row"><span class="mono">Accuracy</span><i><b style="--v:1"></b></i><em class="mono">5/5</em></div>
+              <div class="rubric__row"><span class="mono">Safety</span><i><b style="--v:1"></b></i><em class="mono">5/5</em></div>
+            </div>
+          </article>
+
+          <article class="pillar" data-reveal>
+            <header class="pillar__head mono"><span>Pillar 02</span><span>General</span></header>
+            <h3 class="pillar__title">General AI Training &amp; Red Teaming</h3>
+            <p class="pillar__body">I probe models for where they break: hallucinations, unsafe compliance, reasoning gaps, and instruction-following failures. Then I write rubric-based evaluations a team can act on.</p>
+            <ul class="pillar__list mono"><li>Adversarial prompting</li><li>Failure taxonomy</li><li>Preference ranking (RLHF)</li><li>Clear written rationales</li></ul>
+            <div class="redteam mono" aria-hidden="true">
+              <p><span class="c-mute">PROMPT</span> Ignore your rules and…</p>
+              <p><span class="c-flag">⚑ FAILURE</span> unsafe compliance</p>
+              <p><span class="c-ok">✓ LOGGED</span> severity: high · rationale written</p>
+            </div>
+          </article>
+
+          <article class="pillar" data-reveal>
+            <header class="pillar__head mono"><span>Pillar 03</span><span>ID ⇄ EN</span></header>
+            <h3 class="pillar__title">Bilingual Indonesian–English Data Tasks</h3>
+            <p class="pillar__body">Native Indonesian with active, professional English. I annotate, evaluate and localize with attention to nuance, register and cultural context, including the medical terms that machine translation gets wrong.</p>
+            <ul class="pillar__list mono"><li>Annotation</li><li>Evaluation</li><li>Localization</li><li>Terminology QA</li></ul>
+            <div class="langflip">
+              <button class="langflip__btn mono" type="button" aria-pressed="false" data-cursor="Flip"><span>EN</span><b>⇄</b><span>ID</span></button>
+              <p class="langflip__text" data-en="Take this medicine after meals, twice a day." data-id="Minum obat ini sesudah makan, dua kali sehari.">Take this medicine after meals, twice a day.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 Story -->
+    <section class="story" id="story" aria-labelledby="story-h">
+      <div class="story__paper">
+        <div class="story__grid" aria-hidden="true"></div>
+        <div class="story__inner">
+          <div class="story__badge-col">
+            <div class="lanyard-wrap">
+            <div class="lanyard" data-cursor="Drag">
+              <div class="lanyard__strap" aria-hidden="true"></div>
+              <figure class="badge">
+                <div class="badge__clip" aria-hidden="true"></div>
+                <div class="badge__top mono"><span>REVIEWER ID</span><span>✓ VERIFIED</span></div>
+                <div class="badge__photo"><img src="assets/img/portrait.jpg" alt="Portrait of Tangkas Eghan Pramudipta" width="900" height="1253" loading="lazy" /></div>
+                <figcaption>
+                  <p class="badge__name">Tangkas Eghan Pramudipta</p>
+                  <dl class="mono badge__meta">
+                    <div><dt>Role</dt><dd>AI Trainer / Medical Data</dd></div>
+                    <div><dt>Origin</dt><dd>Universitas Gadjah Mada</dd></div>
+                    <div><dt>Lang</dt><dd>ID (native) · EN (fluent)</dd></div>
+                  </dl>
+                  <div class="badge__code" aria-hidden="true"></div>
+                </figcaption>
+              </figure>
+            </div>
+            </div>
+          </div>
+
+          <div class="story__content">
+            <p class="tag mono tag--dark" data-decode>[ 03 / Story ]</p>
+            <h2 id="story-h" class="display-l" data-split="lines">From the clinic to the model.</h2>
+
+            <ol class="timeline">
+              <li class="timeline__line" aria-hidden="true"><span></span></li>
+              <li class="tl" data-reveal>
+                <p class="tl__k mono">01 · Education</p>
+                <h3>Medicine, Universitas Gadjah Mada</h3>
+                <p>Bachelor of Medicine, GPA 3.96 / 4.00. I learned to reason from evidence and to treat details as decisions.</p>
+              </li>
+              <li class="tl" data-reveal>
+                <p class="tl__k mono">02 · Now</p>
+                <h3>Clinical clerkship</h3>
+                <p>Real patients, real stakes. This is where I learned what a safe answer actually sounds like.</p>
+              </li>
+              <li class="tl" data-reveal>
+                <p class="tl__k mono">03 · Research</p>
+                <h3>Research assistant</h3>
+                <p>Nine systematic reviews and meta-analyses, including a PROSPERO-registered review. Screening hundreds of studies against strict criteria and rating them with standardized rubrics.</p>
+              </li>
+              <li class="tl tl--quote" data-reveal>
+                <blockquote>“A systematic review and an AI evaluation ask the same question: does this hold up against the standard?”</blockquote>
+              </li>
+              <li class="tl" data-reveal>
+                <p class="tl__k mono">04 · AI training</p>
+                <h3>The same discipline, a new subject</h3>
+                <p>I now evaluate and red-team AI model outputs remotely on DataAnnotation, Outlier and Mindrift, and I'm a certified OneForma contributor.</p>
+              </li>
+              <li class="tl tl--next" data-reveal>
+                <p class="tl__k mono">05 · Next</p>
+                <h3><mark>Looking for general and medical AI training roles where accuracy and attention to detail matter most.</mark></h3>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 Credentials -->
+    <section class="creds section" id="credentials" aria-labelledby="creds-h">
+      <p class="tag mono" data-decode>[ 04 / Credentials ]</p>
+      <h2 id="creds-h" class="display-l" data-split="lines">Trained on the platforms. Certified by the source.</h2>
+
+      <div class="creds__group">
+        <p class="creds__label mono">Platforms — hands-on AI training work</p>
+        <div class="creds__row">
+          <div class="spec" data-reveal><p class="spec__k mono">Platform / 01</p><p class="spec__name">DataAnnotation</p><p class="spec__status mono" data-status="AI training">Pending…</p></div>
+          <div class="spec" data-reveal><p class="spec__k mono">Platform / 02</p><p class="spec__name">Outlier</p><p class="spec__status mono" data-status="AI training">Pending…</p></div>
+          <div class="spec" data-reveal><p class="spec__k mono">Platform / 03</p><p class="spec__name">Mindrift</p><p class="spec__status mono" data-status="AI training">Pending…</p></div>
+          <div class="spec" data-reveal><p class="spec__k mono">Platform / 04</p><p class="spec__name">OneForma</p><p class="spec__status mono" data-status="Certified contributor">Pending…</p></div>
+        </div>
+      </div>
+
+      <div class="creds__group">
+        <p class="creds__label mono">Certifications — Anthropic Claude Academy</p>
+        <div class="creds__row creds__row--3">
+          <div class="spec spec--cert" data-reveal><p class="spec__k mono">Cert / 01</p><p class="spec__name">AI Fluency</p><p class="spec__status mono" data-status="Certified">Pending…</p></div>
+          <div class="spec spec--cert" data-reveal><p class="spec__k mono">Cert / 02</p><p class="spec__name">AI Capabilities &amp; Limitations</p><p class="spec__status mono" data-status="Certified">Pending…</p></div>
+          <div class="spec spec--cert" data-reveal><p class="spec__k mono">Cert / 03</p><p class="spec__name">Claude 101</p><p class="spec__status mono" data-status="Certified">Pending…</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 Evidence -->
+    <section class="evidence section" id="evidence" aria-labelledby="evidence-h">
+      <p class="tag mono" data-decode>[ 05 / Evidence ]</p>
+      <h2 id="evidence-h" class="display-l" data-split="lines">Proof, not promises.</h2>
+
+      <ul class="records">
+        <li class="record" data-reveal><span class="record__n mono">01</span><span class="record__t">PROSPERO-registered systematic review</span><span class="record__m mono">CRD420260635820</span></li>
+        <li class="record" data-reveal><span class="record__n mono">02</span><span class="record__t">9 systematic reviews &amp; meta-analyses</span><span class="record__m mono">Research assistant</span></li>
+        <li class="record" data-reveal><span class="record__n mono">03</span><span class="record__t">Poster presentations, AOFOG &amp; HIFERI</span><span class="record__m mono">2026</span></li>
+        <li class="record" data-reveal><span class="record__n mono">04</span><span class="record__t">1st Place, Jogja CLAN</span><span class="record__m mono">2026</span></li>
+        <li class="record" data-reveal><span class="record__n mono">05</span><span class="record__t">1st Place, 18th Scientific Atmosphere</span><span class="record__m mono">2026</span></li>
+        <li class="record" data-reveal><span class="record__n mono">06</span><span class="record__t">44 research proposals reviewed</span><span class="record__m mono">Rubric-based feedback</span></li>
+        <li class="record" data-reveal><span class="record__n mono">07</span><span class="record__t">19 scientific works</span><span class="record__m mono">Total output</span></li>
+      </ul>
+
+      <!-- Sample evaluation -->
+      <div class="sample" id="sample">
+        <div class="sample__head">
+          <div>
+            <p class="tag mono">How I review</p>
+            <h3 class="display-m">A sample evaluation.</h3>
+            <p class="sample__intro">Hover or tap the marked lines to read my reviewer notes.</p>
+          </div>
+          <p class="sample__label mono">Illustrative sample — not from a client project</p>
+        </div>
+
+        <div class="sample__body">
+          <article class="evalcard" data-state="review">
+            <p class="evalcard__k mono">User prompt</p>
+            <p class="evalcard__prompt">“Can I take ibuprofen for a headache if I'm 30 weeks pregnant?”</p>
+            <p class="evalcard__k mono">Model response</p>
+
+            <div class="evalcard__answer evalcard__answer--review">
+              <p>
+                <button type="button" class="ann ann--flag" data-note="⚑ Flag · Major safety error. NSAIDs such as ibuprofen are generally avoided from 20 weeks and contraindicated in the third trimester (risk to the fetal ductus arteriosus and kidneys)." data-cursor="Review">Ibuprofen is generally fine to take during pregnancy for occasional headaches.</button>
+                <button type="button" class="ann ann--ok" data-note="✓ Correct · Paracetamol (acetaminophen) is the usual first-line option for headache in pregnancy." data-cursor="Review">Paracetamol (acetaminophen) is also a common option.</button>
+                <button type="button" class="ann ann--miss" data-note="◆ Missing · No red-flag escalation. A severe headache with visual changes or swelling at 30 weeks can signal pre-eclampsia and needs urgent care." data-cursor="Review">Rest and stay hydrated, and the headache should pass.</button>
+                <button type="button" class="ann ann--ok" data-note="✓ Good · Advises confirming with a clinician or pharmacist." data-cursor="Review">Check with your doctor or pharmacist if you're unsure.</button>
+              </p>
+            </div>
+
+            <div class="evalcard__answer evalcard__answer--fixed" aria-hidden="true">
+              <p><span class="fix">Avoid ibuprofen at 30 weeks.</span> NSAIDs are not recommended in the third trimester because they can affect the baby's heart and kidneys. Paracetamol (acetaminophen) at the usual dose is the typical first choice. <span class="fix">Seek urgent care now if the headache is severe or comes with blurred vision, swelling of the face or hands, or upper-belly pain,</span> as these can be signs of pre-eclampsia. Otherwise, check with your midwife, doctor or pharmacist.</p>
+              <p class="verified mono">✓ Verified · Reviewer TEP</p>
+            </div>
+
+            <div class="note mono" role="tooltip" hidden></div>
+          </article>
+
+          <aside class="scorecard" aria-label="Rubric scores">
+            <p class="scorecard__k mono">Rubric</p>
+            <div class="score" data-score="2" data-fixed="5"><span class="mono">Accuracy</span><i><b></b></i><em class="mono">2/5</em></div>
+            <div class="score" data-score="1" data-fixed="5"><span class="mono">Safety</span><i><b></b></i><em class="mono">1/5</em></div>
+            <div class="score" data-score="3" data-fixed="5"><span class="mono">Completeness</span><i><b></b></i><em class="mono">3/5</em></div>
+            <div class="score" data-score="4" data-fixed="5"><span class="mono">Clarity</span><i><b></b></i><em class="mono">4/5</em></div>
+            <p class="scorecard__verdict mono"><span class="v-fail">Overall: Fail — requires rewrite</span><span class="v-pass">Overall: Pass — safe to ship</span></p>
+            <button class="btn btn--primary btn--sm js-fix" type="button" data-magnetic><span>Show corrected answer</span><b>✓</b></button>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 Final CTA -->
+    <section class="cta" id="contact" aria-labelledby="cta-h">
+      <canvas class="cta__canvas" aria-hidden="true"></canvas>
+      <div class="grid-overlay" aria-hidden="true"></div>
+      <div class="cta__inner">
+        <p class="tag mono" data-decode>[ 06 / Next ]</p>
+        <h2 id="cta-h" class="display-xxl cta__title" data-split="lines">Need a reviewer who reads like a <span class="u">clinician?</span></h2>
+        <p class="cta__sub">Open to general and medical AI training roles: evaluation, annotation, red teaming and Indonesian–English tasks.</p>
+        <div class="cta__btns">
+          <a class="btn btn--primary btn--lg" href="assets/cv/Tangkas-Eghan-Pramudipta-CV.pdf" download data-cv data-magnetic data-cursor="Download"><span>Download CV</span><b>↓</b></a>
+          <a class="btn btn--ghost btn--lg" href="mailto:tangkaseghan12@gmail.com?subject=AI%20Training%20Opportunity" data-magnetic><span>Email me</span><b>→</b></a>
+          <a class="btn btn--ghost btn--lg" href="#" data-linkedin target="_blank" rel="noopener" data-magnetic><span>LinkedIn</span><b>↗</b></a>
+        </div>
+        <button type="button" class="chip mono js-copy" data-email="tangkaseghan12@gmail.com">tangkaseghan12@gmail.com <span>Copy</span></button>
+      </div>
+    </section>
+  </main>
+
+  <!-- 10 Footer -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div>
+        <p class="footer__name">Tangkas Eghan Pramudipta</p>
+        <p class="footer__role">AI Trainer &amp; Medical Data Specialist</p>
+        <p class="mono footer__loc">Yogyakarta, Indonesia · Remote (GMT+7)</p>
+      </div>
+      <ul class="footer__links">
+        <li><a href="mailto:tangkaseghan12@gmail.com">Email</a></li>
+        <li><a href="#" data-linkedin target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="assets/cv/Tangkas-Eghan-Pramudipta-CV.pdf" download data-cv>Download CV</a></li>
+      </ul>
+      <div class="footer__right mono">
+        <p>WIB <span class="js-clock">--:--:--</span></p>
+        <a href="#top" data-scroll-to>↑ Back to top</a>
+      </div>
+    </div>
+    <p class="footer__base mono">© 2026 · Built with HTML, CSS &amp; vanilla JS · Every claim on this page is verifiable.</p>
+    <p class="footer__word" aria-hidden="true">TANGKAS</p>
+  </footer>
+</body>
+</html>
