@@ -17,6 +17,30 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .research__lead { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 64px); align-items: end; margin-bottom: clamp(40px, 5vw, 64px); }
+    .research__lead p { color: var(--mute); font-size: clamp(1rem, 1.3vw, 1.25rem); }
+    .research h2 { max-width: 15ch; }
+    .paper { position: relative; display: grid; grid-template-columns: 70px 1fr auto; gap: 20px; align-items: baseline;
+      padding: clamp(18px, 2.2vw, 28px) 12px; border-bottom: 1px solid var(--line-2);
+      overflow: hidden; isolation: isolate; transition: color .5s var(--ease), padding .5s var(--ease); }
+    .papers { border-top: 1px solid var(--line-2); }
+    .paper::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--cobalt); transform: scaleY(0); transform-origin: bottom; transition: transform .55s var(--ease); }
+    .paper:hover::before { transform: scaleY(1); transform-origin: top; }
+    .paper:hover { padding-left: 24px; }
+    .paper__n { color: var(--sky); transition: color .4s; }
+    .paper__t { font-size: clamp(1.05rem, 1.9vw, 1.8rem); font-weight: 600; letter-spacing: -.03em; line-height: 1.15; }
+    .paper__t small { display: block; font-size: .58em; font-weight: 400; letter-spacing: 0; color: var(--mute); margin-top: 8px; transition: color .4s; }
+    .paper__m { color: var(--mute); text-align: right; white-space: nowrap; transition: color .4s; }
+    .paper:hover .paper__n, .paper:hover .paper__m, .paper:hover .paper__t small { color: var(--white); }
+    .research__more { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: clamp(32px, 4vw, 48px); }
+    .research__note { color: var(--mute); font-size: .86rem; }
+    @media (max-width: 860px) { .research__lead { grid-template-columns: 1fr; align-items: start; } }
+    @media (max-width: 767px) {
+      .paper { grid-template-columns: 36px 1fr; }
+      .paper__m { grid-column: 2; text-align: left; margin-top: -6px; white-space: normal; }
+    }
+  </style>
 
   <script type="application/ld+json">
   {
@@ -69,7 +93,8 @@
       <a href="#pillars" data-scroll-to><i>02</i>Work</a>
       <a href="#story" data-scroll-to><i>03</i>Story</a>
       <a href="#credentials" data-scroll-to><i>04</i>Credentials</a>
-      <a href="#evidence" data-scroll-to><i>05</i>Evidence</a>
+      <a href="#research" data-scroll-to><i>05</i>Research</a>
+      <a href="#evidence" data-scroll-to><i>06</i>Evidence</a>
     </nav>
     <a href="#contact" class="nav__cta" data-scroll-to data-magnetic>Contact</a>
   </header>
@@ -278,9 +303,47 @@
       </div>
     </section>
 
-    <!-- 08 Evidence -->
+
+    <!-- 08 Research -->
+    <section class="research section" id="research" aria-labelledby="research-h">
+      <p class="tag mono" data-decode>[ 05 / Research ]</p>
+      <div class="research__lead">
+        <h2 id="research-h" class="display-l" data-split="lines">Nineteen works, abstracts in the open.</h2>
+        <p>Nine systematic reviews and meta-analyses, plus original research, case reports and innovation papers. This is the training ground for how I evaluate anything: screen against criteria, score with a rubric, write down the reasoning.</p>
+      </div>
+
+      <ul class="papers">
+        <li><a class="paper" href="research.html#hpv-menstrual-blood">
+          <span class="paper__n mono">01</span>
+          <span class="paper__t">Diagnostic accuracy of menstrual blood for HPV DNA detection<small>Pooled sensitivity 92.3%, specificity 84.8% across 6 studies and 3,504 women</small></span>
+          <span class="paper__m mono">PROSPERO · IJGC</span></a></li>
+        <li><a class="paper" href="research.html#salivary-mirna-endometriosis">
+          <span class="paper__n mono">02</span>
+          <span class="paper__t">Salivary microRNAs for endometriosis<small>Pooled sensitivity 93%, specificity 96%, HSROC-AUC 0.917</small></span>
+          <span class="paper__m mono">Poster · FRES 2026</span></a></li>
+        <li><a class="paper" href="research.html#ppos-endometriosis-ivf">
+          <span class="paper__n mono">03</span>
+          <span class="paper__t">Progestin-primed ovarian stimulation in endometriosis IVF/ICSI<small>8 studies, 3,073 women: shorter stimulation, comparable pregnancy outcomes</small></span>
+          <span class="paper__m mono">AOFOG 2026</span></a></li>
+        <li><a class="paper" href="research.html#ppu-thesis">
+          <span class="paper__n mono">04</span>
+          <span class="paper__t">Problematic pornography use and mental health in medical students<small>356 students, Poisson regression with robust variance</small></span>
+          <span class="paper__m mono">Thesis · 2026</span></a></li>
+        <li><a class="paper" href="research.html#v-entrix-copd">
+          <span class="paper__n mono">05</span>
+          <span class="paper__t">V-ENTRIX: sequential nano-in-micro therapy for smokers with COPD<small>Indacaterol, tiotropium and nicotine with staggered release profiles</small></span>
+          <span class="paper__m mono">1st Place · 2026</span></a></li>
+      </ul>
+
+      <div class="research__more">
+        <a class="btn btn--primary" href="research.html" data-magnetic data-cursor="Read"><span>Read all 19 abstracts</span><b>&rarr;</b></a>
+        <p class="research__note">Abstracts are published in full. Manuscripts on request.</p>
+      </div>
+    </section>
+
+    <!-- 09 Evidence -->
     <section class="evidence section" id="evidence" aria-labelledby="evidence-h">
-      <p class="tag mono" data-decode>[ 05 / Evidence ]</p>
+      <p class="tag mono" data-decode>[ 06 / Evidence ]</p>
       <h2 id="evidence-h" class="display-l" data-split="lines">Proof, not promises.</h2>
 
       <ul class="records">
@@ -340,12 +403,12 @@
       </div>
     </section>
 
-    <!-- 09 Final CTA -->
+    <!-- 10 Final CTA -->
     <section class="cta" id="contact" aria-labelledby="cta-h">
       <canvas class="cta__canvas" aria-hidden="true"></canvas>
       <div class="grid-overlay" aria-hidden="true"></div>
       <div class="cta__inner">
-        <p class="tag mono" data-decode>[ 06 / Next ]</p>
+        <p class="tag mono" data-decode>[ 07 / Next ]</p>
         <h2 id="cta-h" class="display-xxl cta__title" data-split="lines">Need a reviewer who reads like a <span class="u">clinician?</span></h2>
         <p class="cta__sub">Open to general and medical AI training roles: evaluation, annotation, red teaming and Indonesian–English tasks.</p>
         <div class="cta__btns">
@@ -358,7 +421,7 @@
     </section>
   </main>
 
-  <!-- 10 Footer -->
+  <!-- 11 Footer -->
   <footer class="footer">
     <div class="footer__top">
       <div>
@@ -369,6 +432,7 @@
       <ul class="footer__links">
         <li><a href="mailto:tangkaseghan12@gmail.com">Email</a></li>
         <li><a href="#" data-linkedin target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="research.html">Research &amp; publications</a></li>
         <li><a href="Tangkas-Eghan-Pramudipta-CV.pdf" download data-cv>Download CV</a></li>
       </ul>
       <div class="footer__right mono">

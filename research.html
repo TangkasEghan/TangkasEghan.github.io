@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Research &amp; Publications — Tangkas Eghan Pramudipta</title>
+  <meta name="description" content="Abstracts of 19 scientific works by Tangkas Eghan Pramudipta: systematic reviews and meta-analyses, original research, case reports and innovation papers." />
+  <meta name="theme-color" content="#050B1A" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23050B1A'/%3E%3Cpath d='M18 33l9 9 19-20' fill='none' stroke='%234DD8FF' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ---------- Research page ---------- */
+    .rnav { position: sticky; top: 0; z-index: 70; display: flex; align-items: center; justify-content: space-between; gap: 20px;
+      padding: 16px var(--gutter); background: rgba(5,11,26,.72); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line); }
+    .rnav__back { display: inline-flex; align-items: center; gap: 10px; font: 500 .74rem/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--mute); transition: color .3s; }
+    .rnav__back:hover { color: var(--white); }
+    .rnav__back b { color: var(--azure); font-weight: 400; }
+    .rnav__cta { font: 500 .74rem/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 11px 16px; border-radius: 999px; border: 1px solid var(--line-2); transition: background .3s, color .3s, border-color .3s; }
+    .rnav__cta:hover { background: var(--white); color: var(--navy-950); border-color: var(--white); }
+
+    .rhead { position: relative; padding: clamp(56px, 9vw, 120px) var(--gutter) clamp(32px, 5vw, 56px); overflow: hidden; }
+    .rhead h1 { max-width: 16ch; }
+    .rhead__sub { margin-top: 26px; max-width: 56ch; color: var(--mute); font-size: clamp(1rem, 1.25vw, 1.2rem); }
+    .rhead__stats { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+    .rhead__stats span { border: 1px solid var(--line-2); border-radius: 999px; padding: 9px 14px; font: 500 .68rem/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--mute); }
+    .rhead__stats b { color: var(--azure); font-weight: 500; }
+
+    .pubs { padding: clamp(24px, 4vw, 48px) var(--gutter) clamp(80px, 10vw, 140px); }
+    .pubgroup + .pubgroup { margin-top: clamp(48px, 6vw, 80px); }
+    .pubgroup__h { color: var(--sky); display: flex; align-items: center; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid var(--line-2); }
+    .pubgroup__h i { font-style: normal; color: var(--mute); }
+    .pubgroup__h i::before { content: "("; } .pubgroup__h i::after { content: ")"; }
+
+    .pub { border-bottom: 1px solid var(--line); }
+    .pub summary { position: relative; display: grid; grid-template-columns: 54px 1fr auto auto; gap: 16px; align-items: start;
+      padding: clamp(18px, 2vw, 26px) 10px; cursor: pointer; list-style: none; transition: padding .45s var(--ease), background .35s; }
+    .pub summary::-webkit-details-marker { display: none; }
+    .pub summary:hover { background: rgba(31,107,255,.07); padding-left: 18px; }
+    .pub summary:focus-visible { outline: 2px solid var(--azure); outline-offset: -2px; }
+    .pub__n { color: var(--sky); padding-top: 4px; }
+    .pub__main { min-width: 0; }
+    .pub__title { display: block; font-size: clamp(1.02rem, 1.5vw, 1.4rem); font-weight: 600; letter-spacing: -.02em; line-height: 1.25; }
+    .pub__meta { display: block; color: var(--mute); margin-top: 8px; font-size: .64rem; text-transform: none; letter-spacing: .04em; }
+    .pub__badge { align-self: center; border: 1px solid var(--line-2); border-radius: 999px; padding: 6px 11px; font-size: .6rem; color: var(--mute); white-space: nowrap; }
+    .pub__badge[data-k="ok"] { color: var(--ok); border-color: rgba(61,220,151,.35); }
+    .pub__badge[data-k="win"] { color: var(--mark); border-color: rgba(227,255,0,.35); }
+    .pub__badge[data-k="na"] { color: var(--mute); border-style: dashed; }
+    .pub__chev { align-self: center; width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%;
+      border: 1px solid var(--line-2); color: var(--sky); font-size: 1rem; line-height: 1; transition: transform .45s var(--ease), background .3s, color .3s; }
+    .pub summary:hover .pub__chev { background: var(--cobalt); color: var(--white); border-color: var(--cobalt); }
+    .pub details[open] .pub__chev, .pub[open] .pub__chev { transform: rotate(45deg); }
+    .pub details[open] > summary .pub__chev { transform: rotate(45deg); }
+
+    .pub__body { padding: 4px 10px clamp(28px, 3vw, 40px) 70px; max-width: 86ch; }
+    .pub__body p { color: var(--mute); margin-bottom: 14px; font-size: .97rem; line-height: 1.7; }
+    .pub__orig { font-style: italic; }
+    .pub__authors { color: var(--white) !important; font-weight: 500; }
+    .pub__affil { font-size: .84rem !important; }
+    .pub__h { color: var(--sky); margin: 18px 0 6px; font-size: .64rem; }
+    .pub__kw { color: var(--mute) !important; text-transform: none; letter-spacing: .03em; font-size: .72rem !important; border-top: 1px solid var(--line); padding-top: 14px; margin-top: 18px; }
+    .pub__ask { font-size: .88rem !important; }
+    .pub__ask a { color: var(--azure); border-bottom: 1px solid rgba(77,216,255,.35); }
+    .pub__ask a:hover { border-bottom-color: var(--azure); }
+    .pub--na summary { opacity: .62; }
+
+    .rfoot { border-top: 1px solid var(--line); padding: clamp(48px, 7vw, 80px) var(--gutter); display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; }
+    .rfoot p { color: var(--mute); max-width: 46ch; }
+    .rfoot__btns { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    @media (max-width: 860px) {
+      .pub summary { grid-template-columns: 34px 1fr auto; gap: 12px; }
+      .pub__badge { grid-column: 2; justify-self: start; margin-top: 10px; align-self: start; }
+      .pub__chev { grid-row: 1; grid-column: 3; }
+      .pub__body { padding-left: 46px; }
+    }
+    @media print {
+      .rnav, .rfoot__btns, .pub__chev, .grain, .grid-overlay { display: none !important; }
+      body { background: #fff; color: #111; }
+      .pub__body { display: block !important; }
+      .pub__body p, .pub__meta, .pub__affil { color: #333 !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <nav class="rnav" aria-label="Page">
+    <a class="rnav__back" href="index.html"><b>&larr;</b> Tangkas E. Pramudipta</a>
+    <a class="rnav__cta" href="Tangkas-Eghan-Pramudipta-CV.pdf" download>Download CV</a>
+  </nav>
+
+  <header class="rhead">
+    <div class="grid-overlay grid-overlay--soft" aria-hidden="true"></div>
+    <p class="tag mono">[ Research &amp; Publications ]</p>
+    <h1 class="display-l">Nineteen works. Every abstract, in the open.</h1>
+    <p class="rhead__sub">Systematic reviews and meta-analyses, original research, case reports and innovation papers, written as co-author or lead author. Expand any entry to read the full abstract. Full manuscripts are available on request.</p>
+    <div class="rhead__stats">
+      <span><b>19</b>&nbsp; scientific works</span>
+      <span><b>9</b>&nbsp; systematic reviews &amp; meta-analyses</span>
+      <span><b>1</b>&nbsp; PROSPERO registration</span>
+      <span><b>3</b>&nbsp; conference presentations</span>
+    </div>
+  </header>
+
+  <main class="pubs">
+<section class="pubgroup" data-g="sr">
+<h3 class="pubgroup__h mono">Systematic reviews &amp; meta-analyses <i>9</i></h3>
+<article class="pub" id="hpv-menstrual-blood">
+<details>
+<summary>
+  <span class="pub__n mono">01</span>
+  <span class="pub__main">
+    <span class="pub__title">Diagnostic Accuracy of Menstrual Blood for HPV DNA Detection: A Systematic Review and Meta-Analysis</span>
+    <span class="pub__meta mono">Systematic Review &amp; Meta-Analysis &nbsp;·&nbsp; PROSPERO CRD420260635820; manuscript prepared for the International Journal of Gynecological Cancer</span>
+  </span>
+  <span class="pub__badge mono" data-k="ok">PROSPERO registered</span>
+  <span class="pub__chev" aria-hidden="true">+</span>
+</summary>
+<div class="pub__body">
+<p class="pub__authors">Endah Rahmawati, Ardhanu Kusumanto, Tangkas Eghan, Aqila Adzra, Ghina Athoya, Salsabila Efananda</p>
+<p class="pub__affil">Division of Fertility and Reproductive Endocrinology, Department of Obstetrics and Gynecology; School of Medicine, Faculty of Medicine, Public Health and Nursing, Universitas Gadjah Mada</p>
+<h4 class="pub__h mono">Objective</h4>
+<p>To evaluate the diagnostic accuracy (sensitivity and specificity) of human papillomavirus (HPV) DNA detection using menstrual blood specimens compared with cervical HPV DNA testing.</p>
+<h4 class="pub__h mono">Methods</h4>
+<p>This systematic review followed the PRISMA-DTA guidelines. Eight databases and reference lists were searched through September 2026 for English-language studies evaluating HPV DNA detection in menstrual blood from premenopausal women, using cervical HPV DNA testing or histology as the reference standard. Reviews, case reports and series, animal studies, and studies without sufficient data to construct a 2x2 contingency table were excluded. Risk of bias was assessed with QUADAS-3. Univariate and bivariate random-effects models, subgroup and leave-one-out analyses, and Deeks&#x27; funnel plot asymmetry test were performed in R.</p>
+<h4 class="pub__h mono">Results</h4>
+<p>Six observational studies involving 3,504 women were included. Pooled sensitivity and specificity were 0.923 (95% CI 0.831-0.967) and 0.848 (95% CI 0.666-0.940), respectively, with significant heterogeneity. Capture sequencing yielded higher sensitivity than PCR-based assays (0.970 vs 0.855; p=0.004), with no residual heterogeneity. Specificity was lower in high-risk clinical populations than in general screening populations (0.709 vs 0.931; p=0.009). The bivariate model yielded similar estimates (AUC 0.945), and leave-one-out analysis confirmed their robustness. Five studies had a high overall risk of bias, mainly due to participant selection.</p>
+<h4 class="pub__h mono">Conclusion</h4>
+<p>HPV DNA testing using pad-collected menstrual blood demonstrates high sensitivity and good specificity, particularly with capture sequencing and in general screening populations. As a noninvasive, self-collected specimen, it could help address gaps in cervical cancer screening in Indonesia, although larger studies at low risk of bias are needed.</p>
+<p class="pub__kw mono">Keywords: cervical cancer; diagnostic accuracy; HPV DNA; menstrual blood; screening</p>
+<p class="pub__ask">Abstract only. <a href="mailto:tangkaseghan12@gmail.com?subject=Full%20paper%20request&amp;body=Hi%20Tangkas,%20could%20you%20send%20the%20full%20paper%20for:%20hpv-menstrual-blood">Request the full manuscript &rarr;</a></p>
+</div>
+</details>
+</article>
+<article class="pub" id="salivary-mirna-endometriosis">
+<details>
+<summary>
+  <span class="pub__n mono">02</span>
+  <span class="pub__main">
+    <span class="pub__title">Diagnostic Accuracy of Salivary MicroRNAs for Endometriosis: A Systematic Review and Meta-Analysis</span>
+    <span class="pub__meta mono">Systematic Review &amp; Meta-Analysis &nbsp;·&nbsp; Poster presentation, FRES 2026</span>
+  </span>
+  <span class="pub__badge mono" data-k="ok">Poster presented</span>
+  <span class="pub__chev" aria-hidden="true">+</span>
+</summary>
+<div class="pub__body">
+<p class="pub__authors">Endah Rahmawati, Tangkas Eghan, Ghina Athoya</p>
+<p class="pub__affil">Department of Obstetrics and Gynecology; School of Medicine, Faculty of Medicine, Public Health and Nursing, Universitas Gadjah Mada</p>
+<h4 class="pub__h mono">Background</h4>
+<p>Endometriosis is a chronic, estrogen-dependent inflammatory disease affecting approximately 10% of women of reproductive age, yet diagnosis is frequently delayed due to non-specific symptoms and the limited accuracy of current non-invasive diagnostic modalities. Salivary microRNAs (miRNAs) have emerged as promising non-invasive biomarker candidates; however, evidence on their diagnostic accuracy remains limited and has not been comprehensively synthesized.</p>
+<h4 class="pub__h mono">Objective</h4>
+<p>To evaluate the diagnostic accuracy of salivary miRNAs for endometriosis, including pooled sensitivity, specificity, diagnostic odds ratio (DOR), and the area under the hierarchical summary receiver operating characteristic curve (HSROC-AUC).</p>
+<h4 class="pub__h mono">Methods</h4>
+<p>A systematic search was conducted across nine electronic databases up to 26 May 2026, following PRISMA-DTA guidance. Eligible studies were assessed for methodological quality using QUADAS-3. Diagnostic data were synthesized using a bivariate random-effects model and an HSROC model. Comparison of miRNA panels versus single-miRNA assays was a post hoc exploratory subgroup analysis.</p>
+<h4 class="pub__h mono">Results</h4>
+<p>Three prospective studies (two from France, one from Austria) comprising 434 women (329 cases, 105 controls) met the eligibility criteria. Pooled sensitivity was 0.93 (95% CI 0.79-0.98) and pooled specificity was 0.96 (95% CI 0.87-0.99). The pooled DOR was 201.2, with an HSROC-AUC of 0.917. The 109-miRNA panel achieved higher sensitivity (96.5%) and DOR (737.5) than the single hsa-miR-135a assay (sensitivity 70.6%; DOR 18.0), with significant subgroup differences. All three studies were judged to have an overall high risk of bias.</p>
+<h4 class="pub__h mono">Conclusion</h4>
+<p>Salivary miRNA, especially as a multi-miRNA panel, shows promising diagnostic accuracy for endometriosis and may serve as an adjunctive non-invasive screening tool, but it is not yet ready to replace laparoscopy. External, multicenter validation with standardized protocols is needed before clinical implementation.</p>
+<p class="pub__kw mono">Keywords: endometriosis; salivary microRNA; diagnostic accuracy; non-invasive biomarker; meta-analysis</p>
+<p class="pub__ask">Abstract only. <a href="mailto:tangkaseghan12@gmail.com?subject=Full%20paper%20request&amp;body=Hi%20Tangkas,%20could%20you%20send%20the%20full%20paper%20for:%20salivary-mirna-endometriosis">Request the full manuscript &rarr;</a></p>
+</div>
+</details>
+</article>
+<article class="pub" id="ppos-endometriosis-ivf">
+<details>
+<summary>
+  <span class="pub__n mono">03</span>
+  <span class="pub__main">
+    <span class="pub__title">Efficacy and Safety of Progestin-Primed Ovarian Stimulation versus Gonadotropin Stimulation in Endometriosis Patients Undergoing IVF/ICSI: A Systematic Review and Meta-Analysis</span>
+    <span class="pub__meta mono">Systematic Review &amp; Meta-Analysis &nbsp;·&nbsp; Presentation, AOFOG 2026</span>
+  </span>
+  <span class="pub__badge mono" data-k="ok">Presented</span>
+  <span class="pub__chev" aria-hidden="true">+</span>
+</summary>
+<div class="pub__body">
+<p class="pub__authors">Endah Rahmawati, Tangkas Eghan, Ghina Athoya</p>
+<p class="pub__affil">Department of Obstetrics and Gynecology; School of Medicine, Faculty of Medicine, Public Health and Nursing, Universitas Gadjah Mada</p>
+<h4 class="pub__h mono">Background</h4>
+<p>Endometriosis affects about 10% of women of reproductive age, and 30-50% of affected women experience infertility. The optimal controlled ovarian stimulation protocol for these women undergoing IVF/ICSI remains controversial. Progestin-primed ovarian stimulation (PPOS) has emerged as an oral, potentially lower-cost alternative to GnRH analogue-based protocols.</p>
+<h4 class="pub__h mono">Objective</h4>
+<p>To compare the efficacy and safety of PPOS with conventional GnRH agonist and antagonist protocols in women with endometriosis undergoing IVF/ICSI.</p>
+<h4 class="pub__h mono">Methods</h4>
+<p>Seven databases were searched up to 20 March 2026. Three reviewers independently screened records and extracted data, and risk of bias was assessed for each study. Dichotomous outcomes were pooled as odds ratios (OR) and continuous outcomes as mean differences (MD) using random-effects models.</p>
+<h4 class="pub__h mono">Results</h4>
+<p>Eight studies (seven retrospective, one prospective) involving 3,073 women from France, China, and Turkiye were included. PPOS shortened stimulation duration (MD -0.95 days; 95% CI -1.65 to -0.24), with the largest reduction versus GnRH agonist protocols (MD -2.11 days; 95% CI -2.56 to -1.66). Total gonadotropin dose did not differ overall but was lower than in antagonist-only protocols (MD -319.7 IU; 95% CI -471.0 to -168.4). Oocyte and embryological outcomes were comparable. Clinical pregnancy (OR 0.86; 95% CI 0.64-1.17), implantation (OR 0.90; 95% CI 0.44-1.84), live birth (OR 0.78; 95% CI 0.44-1.41), miscarriage (OR 0.61; 95% CI 0.34-1.11), and ectopic pregnancy (OR 1.03; 95% CI 0.23-4.70) did not differ.</p>
+<h4 class="pub__h mono">Conclusion</h4>
+<p>PPOS is an effective and safe alternative to conventional gonadotropin-based stimulation in women with endometriosis undergoing IVF/ICSI. It may shorten stimulation and reduce gonadotropin exposure while maintaining comparable embryological, pregnancy, and safety outcomes. Multicenter randomized trials are needed to confirm long-term clinical and cost-effectiveness benefits.</p>
+<p class="pub__kw mono">Keywords: endometriosis; progestin-primed ovarian stimulation; IVF/ICSI; GnRH antagonist; meta-analysis</p>
+<p class="pub__ask">Abstract only. <a href="mailto:tangkaseghan12@gmail.com?subject=Full%20paper%20request&amp;body=Hi%20Tangkas,%20could%20you%20send%20the%20full%20paper%20for:%20ppos-endometriosis-ivf">Request the full manuscript &rarr;</a></p>
+</div>
+</details>
+</article>
+<article class="pub" id="exercise-ecg-cmd">
+<details>
+<summary>
+  <span class="pub__n mono">04</span>
+  <span class="pub__main">
+    <span class="pub__title">Diagnostic Accuracy of Exercise Stress Electrocardiography for Detecting Coronary Microvascular Dysfunction: A Systematic Review and Meta-Analysis</span>
+    <span class="pub__meta mono">Systematic Review &amp; Meta-Analysis &nbsp;·&nbsp; Scientific poster, 2026</span>
+  </span>
+  <span class="pub__badge mono" data-k="ok">Poster presented</span>
+  <span class="pub__chev" aria-hidden="true">+</span>
+</summary>
+<div class="pub__body">
+<p class="pub__authors">A. F. Malika, F. Tsabita, K. T. Kaylie, T. E. Pramudipta, A. D. Kusuma</p>
+<p class="pub__affil">Medical Doctor Profession Program; Department of Cardiology and Vascular Medicine, Faculty of Medicine, Public Health and Nursing, Universitas Gadjah Mada</p>
+<h4 class="pub__h mono">Background</h4>
+<p>Ischaemia with non-obstructive coronary arteries (INOCA) is an important cause of angina, yet many patients with non-obstructive findings on angiography remain undiagnosed or are mislabelled as having non-cardiac chest pain. Functional assessment of coronary microvascular dysfunction (CMD) usually requires specialized equipment, whereas exercise stress electrocardiography is widely available, inexpensive, and routinely used to detect inducible myocardial ischaemia.</p>
+<h4 class="pub__h mono">Objective</h4>
+<p>To evaluate the diagnostic accuracy of exercise stress electrocardiography for detecting coronary microvascular dysfunction.</p>
+<h4 class="pub__h mono">Methods</h4>
+<p>Seven databases were searched from inception to 15 August 2026. Four reviewers independently screened studies, extracted 2x2 data, and applied QUADAS-2. Sensitivity, specificity, hierarchical summary ROC, and diagnostic odds ratio (DOR) were pooled using random-effects models, with subgroup and leave-one-out analyses.</p>
+<h4 class="pub__h mono">Results</h4>
+<p>Of 197 identified records, four studies comprising 818 participants were included. Pooled sensitivity was 59.3% (95% CI 35.9-79.1%) and pooled specificity was 87.6% (95% CI 59.7-97.1%), with an area under the curve of 0.784 and a pooled DOR of 11.87 (95% CI 1.86-75.71). Heterogeneity was substantial across all outcomes, driven mainly by differences in CMD reference standards and phenotype definitions.</p>
+<h4 class="pub__h mono">Conclusion</h4>
+<p>Exercise electrocardiography demonstrated moderate diagnostic accuracy for CMD, with greater specificity than sensitivity. Heterogeneity in CMD definitions and testing protocols limits generalizability and supports the need for standardized diagnostic criteria.</p>
+<p class="pub__kw mono">Keywords: coronary microvascular dysfunction; INOCA; exercise electrocardiography; diagnostic accuracy; meta-analysis</p>
+<p class="pub__ask">Abstract only. <a href="mailto:tangkaseghan12@gmail.com?subject=Full%20paper%20request&amp;body=Hi%20Tangkas,%20could%20you%20send%20the%20full%20paper%20for:%20exercise-ecg-cmd">Request the full manuscript &rarr;</a></p>
+</div>
+</details>
+</article>
+<article class="pub" id="telemedicine-postpartum-depression">
+<details>
+<summary>
+  <span class="pub__n mono">05</span>
+  <span class="pub__main">
+    <span class="pub__title">Bridging the Treatment Gap: A Systematic Review and Network Meta-Analysis of the Comparative Effectiveness of Telemedicine for Postpartum Depression</span>
+    <span class="pub__meta mono">Systematic Review &amp; Network Meta-Analysis &nbsp;·&nbsp; Scientific paper, AMSA-UGM, 2025</span>
+  </span>
+  <span class="pub__chev" aria-hidden="true">+</span>
+</summary>
+<div class="pub__body">
+<p class="pub__authors">Tangkas Eghan Pramudipta, Frengki Prabowo Saputro Wijayanto, Ghina Athoya Thifal, Made Aditya Krisnanta Gandhy, Musa Gani Rahman</p>
+<p class="pub__affil">Faculty of Medicine, Public Health and Nursing, Universitas Gadjah Mada</p>
+<h4 class="pub__h mono">Introduction</h4>
+<p>Postpartum depression (PPD) is a serious psychiatric disorder and the most common mental health condition during the puerperium, adversely affecting the well-being of both mother and child. Treatment outcomes remain suboptimal for many patients due to multiple barriers. Telemedicine has emerged as a promising approach to bridge this treatment gap, offering accessible and flexible modalities.</p>
+<h4 class="pub__h mono">Objectives</h4>
+<p>To rank telemedicine modalities for the treatment of PPD by their relative effectiveness in reducing depressive symptoms, and to identify factors that may influence treatment outcomes.</p>
+<h4 class="pub__h mono">Methods</h4>
+<p>A systematic search was performed in September 2025 across PubMed, Scopus, the Cochrane Library, EBSCOhost, ProQuest, and Epistemonikos for randomized controlled trials evaluating telemedicine modalities in patients with PPD. Unpublished studies and those without accessible full text were excluded. Risk of bias was assessed with the Cochrane Risk of Bias tool, and analysis was performed in RStudio.</p>
+<h4 class="pub__h mono">Results</h4>
+<p>Self-guided CBT significantly improved quality of life compared with treatment as usual (TAU) (MD 6.00; 95% CrI 1.24 to 10.81). App-based intervention plus TAU and web-based intervention significantly reduced depression compared with TAU (MD -3.17; 95% CrI -5.93 to -0.45 and MD -2.55; 95% CrI -4.72 to -0.36, respectively).</p>
+<h4 class="pub__h mono">Conclusions</h4>
+<p>Telemedicine effectively reduces postpartum depression symptoms, with app-based interventions combined with treatment as usual and self-guided CBT performing best. Integrating culturally adapted, app-based telemedicine into maternal health systems may offer an accessible and sustainable approach to postpartum depression care.</p>
+<p class="pub__kw mono">Keywords: effectiveness; postpartum depression; telemedicine; network meta-analysis</p>
+<p class="pub__ask">Abstract only. <a href="mailto:tangkaseghan12@gmail.com?subject=Full%20paper%20request&amp;body=Hi%20Tangkas,%20could%20you%20send%20the%20full%20paper%20for:%20telemedicine-postpartum-depression">Request the full manuscript &rarr;</a></p>
+</div>
+</details>
+</article>
+<article class="pub" id="mirna-all-neurotoxicity">
+<details>
+<summary>
+  <span class="pub__n mono">06</span>
+  <span class="pub__main">
+    <span class="pub__title">Accuracy of miRNA as a Predictor of Chemotherapy-Induced Neurotoxicity in Pediatric Acute Lymphoblastic Leukemia: A Meta-Analysis</span>
+    <span class="pub__meta mono">Systematic Review &amp; Meta-Analysis &nbsp;·&nbsp; R-Ticles, Vol. 6 No. 2</span>
+  </span>
+  <span class="pub__badge mono" data-k="ok">Published</span>
+  <span class="pub__chev" aria-hidden="true">+</span>
+</summary>
+<div class="pub__body">
+<p class="pub__orig">Original title: Akurasi miRNA sebagai Prediktor Neurotoksisitas Kemoterapi Leukemia Limfoblastik Akut Anak: Analisis Meta</p>
+<p class="pub__authors">Tangkas Eghan Pramudipta, Calya Fadey Rashida, Naurelle Tabina Hanief</p>
+<p class="pub__affil">AMSA-Universitas Gadjah Mada</p>
+<h4 class="pub__h mono">Background</h4>
+<p>Acute lymphoblastic leukemia (ALL) is a common childhood blood cancer with a poor prognosis, especially in Indonesia. Chemotherapy such as methotrexate is standard treatment, but neurotoxicity can reduce patients&#x27; quality of life. Early detection matters, yet current screening methods are limited. miRNAs are potentially stable biomarkers that reflect genetic changes related to cancer and nervous system injury.</p>
+<h4 class="pub__h mono">Methods</h4>
+<p>This study followed PRISMA-DTA 2020 and included studies on miRNA expression in children with ALL and its association with chemotherapy toxicity. PubMed and Scopus were searched, and analysis was performed in R using univariate random-effects models, with sensitivity analysis to address high heterogeneity.</p>
+<h4 class="pub__h mono">Results</h4>
+<p>Based on miRNA single nucleotide polymorphism variants measured in serum or plasma, pooled sensitivity for predicting neurotoxicity was 0.64 (95% CI 0.57-0.70) and pooled specificity was 0.42 (95% CI 0.30-0.54). After sensitivity analysis, sensitivity increased to 0.66 (95% CI 0.59-0.72). The area under the curve was 0.457.</p>
+<h4 class="pub__h mono">Conclusion</h4>
+<p>miRNAs have potential as diagnostic biomarkers for detecting neurotoxicity in children undergoing chemotherapy, especially when combined with more specific methods. Their high false-positive rate means they should be used with caution in clinical practice.</p>
+<p class="pub__kw mono">Keywords: acute lymphoblastic leukemia; miRNA; neurotoxicity; chemotherapy; meta-analysis</p>
+<p class="pub__ask">Abstract only. <a href="mailto:tangkaseghan12@gmail.com?subject=Full%20paper%20request&amp;body=Hi%20Tangkas,%20could%20you%20send%20the%20full%20paper%20for:%20mirna-all-neurotoxicity">Request the full manuscript &rarr;</a></p>
+</div>
+</details>
+</article>
+<article class="pub" id="traffic-pollution-adhd">
+<details>
+<summary>
+  <span class="pub__n mono">07</span>
+  <span class="pub__main">
+    <span class="pub__title">The Effect of Traffic-Related Air Pollution and Traffic Noise Pollution on ADHD Symptoms and Cases in Children and Adolescents: A Systematic Review</span>
+    <span class="pub__meta mono">Systematic Review &nbsp;·&nbsp; Review article, AMSA-UGM</span>
+  </span>
+  <span class="pub__chev" aria-hidden="true">+</span>
+</summary>
+<div class="pub__body">
+<p class="pub__orig">Original title: Efek Polusi Udara Lalu Lintas dan Polusi Suara Lalu Lintas terhadap Gejala dan Kasus ADHD pada Anak dan Remaja: Sebuah Tinjauan Sistematis</p>
+<p class="pub__authors">Tangkas Eghan Pramudipta, Aqila Adzra Rafifaridha, Jonathan Hamonangan Sihaloho</p>
+<p class="pub__affil">AMSA-Universitas Gadjah Mada</p>
+<h4 class="pub__h mono">Objective</h4>
+<p>To determine the effects of traffic-related air pollution and traffic noise pollution on the number of ADHD cases and the severity of ADHD symptoms in children and adolescents aged 6-18 years.</p>
+<h4 class="pub__h mono">Methods</h4>
+<p>This review followed PRISMA. Studies from PubMed and Scopus were identified with predefined keywords and screened against eligibility criteria in Rayyan.ai. Eligible studies were observational cohort and longitudinal studies of children and adolescents aged 6-18 years exposed to traffic-related air and/or noise pollution. Risk of bias was assessed with ROBINS-E. Exposure was measured as traffic-related air pollution, traffic noise in decibels, and distance from residence to the nearest road.</p>
+<h4 class="pub__h mono">Results</h4>
+<p>Seven studies met the inclusion criteria and were reviewed using a data extraction table. Several studies carried a moderate risk of bias for different reasons. Some studies showed an association between traffic-related air and noise pollution and ADHD symptoms and cases.</p>
+<h4 class="pub__h mono">Conclusion</h4>
+<p>The association between traffic-related pollution and ADHD cannot yet be firmly established, because results across studies were inconsistent and several studies had limitations. The relationship and its mechanisms are therefore not yet fully understood.</p>
+<p class="pub__kw mono">Keywords: ADHD; traffic-related air pollution; traffic noise; children and adolescents; systematic review</p>
+<p class="pub__ask">Abstract only. <a href="mailto:tangkaseghan12@gmail.com?subject=Full%20paper%20request&amp;body=Hi%20Tangkas,%20could%20you%20send%20the%20full%20paper%20for:%20traffic-pollution-adhd">Request the full manuscript &rarr;</a></p>
+</div>
+</details>
+</article>
+<article class="pub" id="deferasirox-thalassemia">
+<details>
+<summary>
+  <span class="pub__n mono">08</span>
+  <span class="pub__main">
+    <span class="pub__title">The Efficacy and Safety of Deferasirox Administration for Children Suffering from Transfusion-Dependent Thalassemia: A Systematic Review</span>
+    <span class="pub__meta mono">Systematic Review &nbsp;·&nbsp; Scientific paper, Indonesian Medical Students&#x27; Training and Competition (IMSTC) 2024</span>
+  </span>
+  <span class="pub__chev" aria-hidden="true">+</span>
+</summary>
+<div class="pub__body">
+<p class="pub__authors">Tangkas Eghan Pramudipta and team</p>
+<p class="pub__affil">Universitas Gadjah Mada</p>
+<h4 class="pub__h mono">Introduction</h4>
+<p>Thalassemia is an inherited disorder caused by mutations in globin genes that decrease globin chain synthesis, leading to abnormal erythrocyte structure and anaemia. Pediatric patients have a high mortality rate. The main conventional treatment is blood transfusion, which carries a risk of iron overload, so iron chelation therapy such as deferasirox is necessary. As a newer drug, its efficacy and safety in pediatric patients have not been fully established.</p>
+<h4 class="pub__h mono">Objective</h4>
+<p>To evaluate the ability of deferasirox to reduce iron levels effectively and its possible adverse effects in pediatric thalassemia patients.</p>
+<h4 class="pub__h mono">Methodology</h4>
+<p>Eight studies were selected from PubMed using predefined criteria. Rayyan.ai and a data extraction table were used in study selection, and each study was assessed by two reviewers for certainty and risk of bias.</p>
+<h4 class="pub__h mono">Results and Discussion</h4>
+<p>Most studies reported decreased serum ferritin levels after deferasirox administration. Several adverse effects related to the kidney, liver, joints, and eyes were reported.</p>
+<h4 class="pub__h mono">Conclusion</h4>
+<p>Deferasirox is an effective drug for pediatric thalassemia patients with transfusion-related iron accumulation; however, adverse effects may occur, so the dose must be adjusted for each patient.</p>
+<p class="pub__kw mono">Keywords: deferasirox; efficacy; pediatric; safety; thalassemia</p>
+<p class="pub__ask">Abstract only. <a href="mailto:tangkaseghan12@gmail.com?subject=Full%20paper%20request&amp;body=Hi%20Tangkas,%20could%20you%20send%20the%20full%20paper%20for:%20deferasirox-thalassemia">Request the full manuscript &rarr;</a></p>
+</div>
+</details>
+</article>
+<article class="pub" id="turbt-bladder">
+<details class="pub--na">
+<summary>
+  <span class="pub__n mono">09</span>
+  <span class="pub__main">
+    <span class="pub__title">A Comparative Evaluation of the Clinical Outcomes and Complications between En-Bloc Resection of Bladder Tumor (EBRT) and Conventional Transurethral Resection of Bladder Tumor (TURBT) for Non-Muscle Invasive Bladder Cancer: A Systematic Review and Meta-Analysis of Randomized Controlled Trials</span>
+    <span class="pub__meta mono">Systematic Review &amp; Meta-Analysis &nbsp;·&nbsp; Jogja Urology Forum, 2024</span>
+  </span>
+  <span class="pub__badge mono" data-k="na">Abstract not available</span>
+  <span class="pub__chev" aria-hidden="true">+</span>
+</summary>
+<div class="pub__body">
+<p class="pub__authors">Tangkas Eghan Pramudipta and team</p>
+<p class="pub__affil">Universitas Gadjah Mada</p>
+<p class="pub__ask">The abstract for this work is not published here. <a href="mailto:tangkaseghan12@gmail.com?subject=Paper%20enquiry">Get in touch for details &rarr;</a></p>
+</div>
+</details>
+</article>
+</section>
+<section class="pubgroup" data-g="or">
+<h3 class="pubgroup__h mono">Original research &amp; case reports <i>5</i></h3>
+<article class="pub" id="asherman-case-report">
+<details>
+<summary>
+  <span class="pub__n mono">10</span>
+  <span class="pub__main">
+    <span class="pub__title">Successful Pregnancy Following Hysteroscopic Adhesiolysis in a Patient with Asherman&#x27;s Syndrome: A Case Report</span>
+    <span class="pub__meta mono">Case Report &nbsp;·&nbsp; Manuscript prepared for the Indonesian Journal of Obstetrics and Gynecology (INAJOG)</span>
+  </span>
+  <span class="pub__badge mono" data-k="">Prepared for INAJOG</span>
+  <span class="pub__chev" aria-hidden="true">+</span>
+</summary>
+<div class="pub__body">
+<p class="pub__authors">Endah Rahmawati, Shofwal Widad, Tangkas Eghan</p>
+<p class="pub__affil">Department of Obstetrics and Gynecology; School of Medicine, Faculty of Medicine, Public Health and Nursing, Universitas Gadjah Mada</p>
+<h4 class="pub__h mono">Introduction</h4>
+<p>Asherman&#x27;s syndrome (AS) is characterized by intrauterine adhesions that typically develop after postpartum or postabortal curettage and may lead to menstrual irregularities, infertility, and recurrent pregnancy loss. This report presents a successful full-term pregnancy following hysteroscopic adhesiolysis in a patient with severe AS caused by multiple sharp curettages, and discusses key considerations in prevention and management.</p>
+<h4 class="pub__h mono">Case Illustration</h4>
+<p>A 29-year-old G4P0A3 woman with three early pregnancy losses and five prior postabortal sharp curettage procedures presented with hypomenorrhea and recurrent pregnancy loss. Ultrasonography, hysterosalpingography, and hysteroscopy confirmed severe intrauterine adhesions (Manchanda&#x27;s Endoscopic Centre grades 2 and 1). Hysteroscopic sharp adhesiolysis was performed, followed by intrauterine poloxamer-chitosan gel and estrogen-progestin therapy. Re-adhesions developed and were managed with a second adhesiolysis, poloxamer-chitosan instillation, and a copper-T intrauterine device. Six months later the patient conceived spontaneously and delivered a healthy term infant without major complications.</p>
+<h4 class="pub__h mono">Conclusions</h4>
+<p>Severe AS due to multiple sharp curettages can be effectively treated with hysteroscopic adhesiolysis, anti-adhesion measures, and structured postoperative management and surveillance. Early recognition of menstrual abnormalities and subfertility, prompt hysteroscopic evaluation, and favoring medical management or manual vacuum aspiration over sharp curettage are crucial for optimizing reproductive outcomes.</p>
+<p class="pub__kw mono">Keywords: Asherman syndrome; hysteroscopy; intrauterine adhesion; adhesiolysis</p>
+<p class="pub__ask">Abstract only. <a href="mailto:tangkaseghan12@gmail.com?subject=Full%20paper%20request&amp;body=Hi%20Tangkas,%20could%20you%20send%20the%20full%20paper%20for:%20asherman-case-report">Request the full manuscript &rarr;</a></p>
+</div>
+</details>
+</article>
+<article class="pub" id="ppu-thesis">
+<details>
+<summary>
+  <span class="pub__n mono">11</span>
+  <span class="pub__main">
+    <span class="pub__title">The Association of Problematic Pornography Use with the Severity of Depression, Anxiety, and Stress Symptoms among Preclinical Medical Students in Indonesia</span>
+    <span class="pub__meta mono">Undergraduate Thesis (Cross-Sectional Study) &nbsp;·&nbsp; Undergraduate thesis, defended November 2026</span>
+  </span>
+  <span class="pub__badge mono" data-k="ok">Defended</span>
+  <span class="pub__chev" aria-hidden="true">+</span>
+</summary>
+<div class="pub__body">
+<p class="pub__authors">Tangkas Eghan Pramudipta</p>
+<p class="pub__affil">Bachelor of Medicine Program, Faculty of Medicine, Public Health and Nursing, Universitas Gadjah Mada</p>
+<h4 class="pub__h mono">Background</h4>
+<p>Depression, anxiety, and stress symptoms are common among medical students, particularly in the preclinical phase. Problematic Pornography Use (PPU), characterized by loss of control and continued use despite negative consequences, has been suggested to be associated with these symptoms. Evidence on this association among medical students in Indonesia remains very limited.</p>
+<h4 class="pub__h mono">Objective</h4>
+<p>To examine the association between PPU and the severity of depression, anxiety, and stress symptoms among preclinical medical students in Indonesia.</p>
+<h4 class="pub__h mono">Methods</h4>
+<p>Secondary analysis of a 2025 cross-sectional study by the R-Project Research Team of AMSA-Indonesia among preclinical medical students from 43 universities (n=356). PPU was measured with the Problematic Pornography Consumption Scale (PPCS-18; score &gt;=76), and symptoms with the Depression, Anxiety, and Stress Scale (DASS-21), categorized as normal-mild or moderate-extremely severe. Associations were analyzed using Poisson regression with robust variance to obtain prevalence ratios (PR) and adjusted PRs (aPR), adjusting for sex, age, semester, and monthly allowance.</p>
+<h4 class="pub__h mono">Results</h4>
+<p>Among 356 participants (mean age 19.24 years; 53.9% female), PPU prevalence was 7.6% (95% CI 5.3-10.8). Moderate-to-extremely severe symptoms were found in 46.9% for anxiety, 41.6% for depression, and 18.0% for stress. After adjustment, PPU was significantly associated with depressive symptoms (aPR 2.09; 95% CI 1.64-2.66) and anxiety symptoms (aPR 1.90; 95% CI 1.54-2.35), but not with stress (aPR 1.60; 95% CI 0.83-3.09). A higher monthly allowance was associated with all three outcomes. Sex, age, and semester were not significantly associated with any outcome.</p>
+<h4 class="pub__h mono">Conclusion</h4>
+<p>PPU was associated with the severity of depression and anxiety symptoms among preclinical medical students in Indonesia after adjustment for sex, age, semester, and economic status, but not with the severity of stress.</p>
+<p class="pub__kw mono">Keywords: problematic pornography use; depression; anxiety; stress; medical students</p>
+<p class="pub__ask">Abstract only. <a href="mailto:tangkaseghan12@gmail.com?subject=Full%20paper%20request&amp;body=Hi%20Tangkas,%20could%20you%20send%20the%20full%20paper%20for:%20ppu-thesis">Request the full manuscript &rarr;</a></p>
+</div>
+</details>
+</article>
+<article class="pub" id="cinnamon-neuroprotection-stroke">
+<details>
+<summary>
+  <span class="pub__n mono">12</span>
+  <span class="pub__main">
+    <span class="pub__title">Neuroprotective Potential of Cinnamomum verum Extract against Post-Stroke Cognitive Impairment in an Ischemic Stroke Model: A Molecular, Cellular, and Memory Function Analysis</span>
+    <span class="pub__meta mono">Original Research (In Vivo Study) &nbsp;·&nbsp; PKM-RE, PIMNAS 37 (2024); manuscript prepared for journal submission</span>
+  </span>
+  <span class="pub__badge mono" data-k="ok">PIMNAS 37</span>
+  <span class="pub__chev" aria-hidden="true">+</span>
+</summary>
+<div class="pub__body">
+<p class="pub__authors">Iffah Zakiya Yasmin, Erisa, Khansa Audrey Haliza Rahmatania, Tangkas Eghan Pramudipta, Ghina Athoya Thifal, Nur Arfian</p>
+<p class="pub__affil">Faculty of Pharmacy; Faculty of Medicine, Public Health and Nursing, Universitas Gadjah Mada</p>
+<h4 class="pub__h mono">Background</h4>
+<p>Ischemic stroke therapy with tissue plasminogen activator carries a risk of cerebral ischemia-reperfusion injury, which damages the hippocampus and causes post-stroke cognitive impairment in 60% of stroke patients. The neuroprotectant citicoline did not significantly protect the brain. Cinnamomum verum has known neuroprotective activity.</p>
+<h4 class="pub__h mono">Objective</h4>
+<p>To analyze the effect of C. verum extract on memory function, and on cellular and molecular markers of antioxidant enzymes, apoptosis, and inflammation in the hippocampus of an ischemic stroke model.</p>
+<h4 class="pub__h mono">Methods</h4>
+<p>C. verum was extracted in 70% ethanol. Rats underwent transient bilateral common carotid artery occlusion for 20 minutes followed by reperfusion. Extract doses of 100, 200, or 400 mg/kg were administered every 2 days for 4 doses. Memory function was tested with the Morris water maze and hippocampal morphology with hematoxylin-eosin staining. mRNA expression of SOD1, SOD2, caspase-3, and NF-kB was analyzed by RT-PCR, and Bax and CD68 proteins by immunohistochemistry.</p>
+<h4 class="pub__h mono">Results</h4>
+<p>Compared with the occlusion-only group, the C. verum groups showed shorter distance and escape latency, higher SOD1 expression, and lower NF-kB, Bax, and CD68 expression.</p>
+<h4 class="pub__h mono">Conclusion</h4>
+<p>C. verum extract has neuroprotective potential through improved spatial memory function and antioxidant, antiapoptotic, and anti-inflammatory activity in ischemic stroke models.</p>
+<p class="pub__kw mono">Keywords: Cinnamomum verum; post-stroke cognitive impairment; antioxidant enzyme; apoptosis; inflammation</p>
+<p class="pub__ask">Abstract only. <a href="mailto:tangkaseghan12@gmail.com?subject=Full%20paper%20request&amp;body=Hi%20Tangkas,%20could%20you%20send%20the%20full%20paper%20for:%20cinnamon-neuroprotection-stroke">Request the full manuscript &rarr;</a></p>
+</div>
+</details>
+</article>
+<article class="pub" id="purple-sweet-potato-liver-fibrosis">
+<details>
+<summary>
+  <span class="pub__n mono">13</span>
+  <span class="pub__main">
+    <span class="pub__title">Hepatoprotective Potential of Fermented Purple Sweet Potato (Ipomoea batatas) Juice in a Bile Duct Ligation Model</span>
+    <span class="pub__meta mono">Research Proposal (In Vivo Study) &nbsp;·&nbsp; Research proposal, PKM Riset Eksakta (PKM-RE) 2025</span>
+  </span>
+  <span class="pub__badge mono" data-k="">Proposal</span>
+  <span class="pub__chev" aria-hidden="true">+</span>
+</summary>
+<div class="pub__body">
+<p class="pub__orig">Original title: Potensi Hepatoprotektif Fermentasi Sari Ubi Jalar Ungu (Ipomoea batatas) pada Model Bile Duct Ligation</p>
+<p class="pub__authors">Ghina Athoya Thifal, Iffah Zakiya Yasmin, Erisa, Khansa Audrey Haliza Rahmatania, Tangkas Eghan Pramudipta</p>
+<p class="pub__affil">Universitas Gadjah Mada</p>
+<h4 class="pub__h mono">Background</h4>
+<p>Liver fibrosis develops in almost all chronic liver diseases and, if untreated, progresses to irreversible cirrhosis and hepatocellular carcinoma. No antifibrotic therapy has yet been approved by the FDA. Purple sweet potato contains phenolic compounds, anthocyanins, and flavonoids with antioxidant and anti-inflammatory activity, and fermentation further increases its total phenolic content and antioxidant activity.</p>
+<h4 class="pub__h mono">Objective</h4>
+<p>To explore the hepatoprotective potential of fermented purple sweet potato juice in preventing the progression of liver fibrosis in a bile duct ligation mouse model, through molecular, cellular, and liver function analyses.</p>
+<h4 class="pub__h mono">Methods</h4>
+<p>Mice are allocated to five groups (n=5 each): sham operation, bile duct ligation without treatment, and bile duct ligation with fermented juice at 35, 70, or 140 mg/kg. Outcomes include liver function (ALT and AST), oxidative stress (Nrf2 mRNA), apoptosis (caspase-3 mRNA), inflammation (TGF-beta mRNA), and fibrosis (alpha-SMA protein expression and Sirius red staining). Antioxidant activity of the fermented juice is measured with a DPPH assay.</p>
+<h4 class="pub__h mono">Expected Outcome</h4>
+<p>Evidence on fermented purple sweet potato juice as a locally sourced functional food that can attenuate oxidative stress, apoptosis, inflammation, and fibrosis progression in the liver.</p>
+<p class="pub__kw mono">Keywords: purple sweet potato; fermentation; liver fibrosis; bile duct ligation; hepatoprotective</p>
+<p class="pub__ask">Abstract only. <a href="mailto:tangkaseghan12@gmail.com?subject=Full%20paper%20request&amp;body=Hi%20Tangkas,%20could%20you%20send%20the%20full%20paper%20for:%20purple-sweet-potato-liver-fibrosis">Request the full manuscript &rarr;</a></p>
+</div>
+</details>
+</article>
+<article class="pub" id="menstrual-hygiene-prison">
+<details>
+<summary>
+  <span class="pub__n mono">14</span>
+  <span class="pub__main">
+    <span class="pub__title">Determinants of Menstrual Hygiene Management Behind Bars: A Mixed-Methods Study in the Class IIA Women&#x27;s Correctional Facility, Bandar Lampung</span>
+    <span class="pub__meta mono">Research Grant Proposal (Mixed-Methods Study) &nbsp;·&nbsp; Lecturer-student research grant proposal, 2026</span>
+  </span>
+  <span class="pub__badge mono" data-k="">Proposal</span>
+  <span class="pub__chev" aria-hidden="true">+</span>
+</summary>
+<div class="pub__body">
+<p class="pub__orig">Original title: Determinan Pengelolaan Kebersihan Menstruasi di Balik Jeruji: Studi Campuran di Lembaga Pemasyarakatan Perempuan Kelas IIA Bandar Lampung</p>
+<p class="pub__authors">Prima Dhewi Ratrikaningtyas (Principal Investigator), Fitrina Kusumaningrum, Mentari Permatasari, Tangkas Eghan Pramudipta</p>
+<p class="pub__affil">Department of Biostatistics, Epidemiology and Population Health, Faculty of Medicine, Public Health and Nursing, Universitas Gadjah Mada</p>
+<h4 class="pub__h mono">Background</h4>
+<p>More than 800 million women menstruate every day, including about 714,000 women in correctional facilities. In low- and middle-income countries, menstrual hygiene management in prisons faces serious challenges in access to sanitary products and adequate facilities. In 2025, Indonesia had 13,948 female prisoners needing proper menstrual hygiene facilities. Many face limited products, lack of privacy, and poor sanitation, which raises the risk of reproductive tract infections and lowers quality of life. The Class IIA Women&#x27;s Correctional Facility in Bandar Lampung houses 202 women of reproductive age, has limited sanitation facilities, and has no structured menstrual hygiene program.</p>
+<h4 class="pub__h mono">Objective</h4>
+<p>To comprehensively assess and explain the menstrual hygiene management experiences of female inmates: describing their behaviors and practices, identifying the barriers they face, and analyzing how personal, behavioral, and social-environmental factors shape those experiences.</p>
+<h4 class="pub__h mono">Methods</h4>
+<p>A mixed-methods design combining a quantitative survey of all inmates (total sampling, 250 participants) with qualitative in-depth interviews. Informants are selected by purposive sampling based on inclusion and exclusion criteria, with the number determined by data saturation.</p>
+<p class="pub__kw mono">Keywords: menstrual hygiene management; correctional facility; women&#x27;s health; mixed methods; Indonesia</p>
+<p class="pub__ask">Abstract only. <a href="mailto:tangkaseghan12@gmail.com?subject=Full%20paper%20request&amp;body=Hi%20Tangkas,%20could%20you%20send%20the%20full%20paper%20for:%20menstrual-hygiene-prison">Request the full manuscript &rarr;</a></p>
+</div>
+</details>
+</article>
+</section>
+<section class="pubgroup" data-g="in">
+<h3 class="pubgroup__h mono">Innovation papers <i>4</i></h3>
+<article class="pub" id="v-entrix-copd">
+<details>
+<summary>
+  <span class="pub__n mono">15</span>
+  <span class="pub__main">
+    <span class="pub__title">V-ENTRIX: A Smart Sequentially Released Nano-in-Micro Composite of Indacaterol, Tiotropium, and Nicotine Delivered in an E-Cigarette as a Holistic Therapy for Smokers with Chronic Obstructive Pulmonary Disease</span>
+    <span class="pub__meta mono">Innovation Essay &nbsp;·&nbsp; Popular science essay, 18th Scientific Atmosphere 2026 (1st Place)</span>
+  </span>
+  <span class="pub__badge mono" data-k="win">1st Place</span>
+  <span class="pub__chev" aria-hidden="true">+</span>
+</summary>
+<div class="pub__body">
+<p class="pub__authors">Tangkas Eghan Pramudipta, Ghina Athoya Thifal</p>
+<p class="pub__affil">Universitas Gadjah Mada</p>
+<h4 class="pub__h mono">Background</h4>
+<p>Chronic obstructive pulmonary disease (COPD) is among the three leading causes of death worldwide, and smoking is its main risk factor. Indonesia has about 70 million active smokers. Guidelines recommend inhaled bronchodilators and nicotine replacement therapy for smokers with COPD, but effectiveness is limited by poor inhaler technique, which affects up to 80% of patients, and by nicotine dependence.</p>
+<h4 class="pub__h mono">Proposed Innovation</h4>
+<p>V-ENTRIX is a therapeutic device in a vape-pod form factor that delivers a nano-in-micro composite powder with sequential release. Indacaterol is loaded in solid lipid nanoparticles within fast-dissolving PVP microparticles for rapid onset; tiotropium is loaded in PLGA nanoparticles within mannitol-PVP microparticles for 24-hour release; and nicotine is loaded in chitosan-TPP nanoparticles to blunt peak plasma levels and support gradual tapering. Characterization would use dynamic light scattering, zeta potential, scanning electron microscopy, encapsulation efficiency, in vitro release in simulated lung fluid, and cascade impactor testing.</p>
+<h4 class="pub__h mono">Conclusion</h4>
+<p>By combining three agents with distinct release profiles, V-ENTRIX targets lung function and nicotine dependence at the same time. Challenges remain in formulation complexity, dosing precision, and public perception, but the concept merits consideration as a future therapy for smokers with COPD.</p>
+<p class="pub__kw mono">Keywords: COPD; smoking cessation; nano-in-micro composite; indacaterol; tiotropium</p>
+<p class="pub__ask">Abstract only. <a href="mailto:tangkaseghan12@gmail.com?subject=Full%20paper%20request&amp;body=Hi%20Tangkas,%20could%20you%20send%20the%20full%20paper%20for:%20v-entrix-copd">Request the full manuscript &rarr;</a></p>
+</div>
+</details>
+</article>
+<article class="pub" id="strengthen-postherpetic-neuralgia">
+<details>
+<summary>
+  <span class="pub__n mono">16</span>
+  <span class="pub__main">
+    <span class="pub__title">STRENGTHEN: Sprayable Thermosensitive Hydrogel with Minocycline-Encapsulated Nanoparticles as a Preventive Treatment for Post-Herpetic Neuralgia in Elderly Patients with Herpes Zoster</span>
+    <span class="pub__meta mono">Innovation Essay &nbsp;·&nbsp; Scientific essay, MEDJONSON 2024</span>
+  </span>
+  <span class="pub__chev" aria-hidden="true">+</span>
+</summary>
+<div class="pub__body">
+<p class="pub__orig">Original title: Inovasi STRENGTHEN: Sprayable Thermosensitive Hydrogel with Minocycline-Encapsulated Nanoparticles sebagai Tatalaksana Preventif Post-Herpetic Neuralgia pada Lansia dengan Herpes Zoster</p>
+<p class="pub__authors">Tangkas Eghan Pramudipta, Marcellino Maatita</p>
+<p class="pub__affil">Universitas Gadjah Mada</p>
+<h4 class="pub__h mono">Background</h4>
+<p>Post-herpetic neuralgia is chronic neuropathic pain that persists for months to years after a herpes zoster rash heals, and its incidence rises with age. Neuroinflammation driven by pro-inflammatory (M1) microglia after peripheral nerve damage is thought to underlie the chronic pain.</p>
+<h4 class="pub__h mono">Proposed Innovation</h4>
+<p>STRENGTHEN is a sprayable thermosensitive hydrogel containing minocycline encapsulated in biodegradable PLGA nanoparticles. Minocycline protects nerve tissue by inhibiting the activation and migration of M1 microglia, inhibiting CX3CR1, and reducing inflammatory cytokines. Nanoparticle encapsulation improves skin permeation and supports retrograde transport of the drug toward the affected nerves, while the spray format allows practical local application.</p>
+<h4 class="pub__h mono">Conclusion</h4>
+<p>STRENGTHEN is a potential preventive approach for post-herpetic neuralgia, particularly in elderly patients. Its effective topical dose, delivery device, and efficacy still need to be established through formulation studies, in vitro and in vivo testing, and clinical trials.</p>
+<p class="pub__kw mono">Keywords: post-herpetic neuralgia; herpes zoster; minocycline; thermosensitive hydrogel; nanoparticles</p>
+<p class="pub__ask">Abstract only. <a href="mailto:tangkaseghan12@gmail.com?subject=Full%20paper%20request&amp;body=Hi%20Tangkas,%20could%20you%20send%20the%20full%20paper%20for:%20strengthen-postherpetic-neuralgia">Request the full manuscript &rarr;</a></p>
+</div>
+</details>
+</article>
+<article class="pub" id="resolute-type1-diabetes">
+<details>
+<summary>
+  <span class="pub__n mono">17</span>
+  <span class="pub__main">
+    <span class="pub__title">RESOLUTE: Glucose-Responsive Nanocarrier Insulin Delivery in a Hollow Microneedle Patch Integrated with pH, Glucose, and Ketone Sensors as a Therapy for Type 1 Diabetes Mellitus</span>
+    <span class="pub__meta mono">Innovation Essay &nbsp;·&nbsp; Scientific essay, MEDJONSON 2025</span>
+  </span>
+  <span class="pub__chev" aria-hidden="true">+</span>
+</summary>
+<div class="pub__body">
+<p class="pub__orig">Original title: Inovasi RESOLUTE: Glucose-responsive Nanocarrier Insulin Delivery in Hollow Microneedle Patch Integrated with pH, Glucose, and Ketone Sensor sebagai Terapi Pasien Diabetes Melitus Tipe 1</p>
+<p class="pub__authors">Muhammad Ikram Alfarizi, Tangkas Eghan Pramudipta</p>
+<p class="pub__affil">Universitas Gadjah Mada</p>
+<h4 class="pub__h mono">Background</h4>
+<p>Type 1 diabetes mellitus is an autoimmune disease causing absolute insulin deficiency. Its burden is increased by diabetic ketoacidosis, a life-threatening emergency, while insulin correction under current standard therapy can cause hypoglycemia when monitoring is imprecise.</p>
+<h4 class="pub__h mono">Proposed Innovation</h4>
+<p>RESOLUTE is a hollow microneedle patch delivering insulin through a glucose-responsive nanocarrier. When blood glucose rises, glucose oxidase converts glucose to gluconic acid, which triggers insulin release automatically. The patch also integrates colorimetric sensors for pH, glucose, and ketone bodies, giving patients an early warning of diabetic ketoacidosis. The microneedles would be characterized by fracture force testing, flow rate measurement, and skin irritation testing.</p>
+<h4 class="pub__h mono">Conclusion</h4>
+<p>By combining simple microneedle application, automated glucose-responsive insulin release, and real-time pH, glucose, and ketone monitoring, RESOLUTE is a potential approach to improve the effectiveness of insulin therapy in type 1 diabetes, pending preclinical and clinical testing.</p>
+<p class="pub__kw mono">Keywords: type 1 diabetes; hollow microneedle; glucose-responsive insulin; ketone sensor; diabetic ketoacidosis</p>
+<p class="pub__ask">Abstract only. <a href="mailto:tangkaseghan12@gmail.com?subject=Full%20paper%20request&amp;body=Hi%20Tangkas,%20could%20you%20send%20the%20full%20paper%20for:%20resolute-type1-diabetes">Request the full manuscript &rarr;</a></p>
+</div>
+</details>
+</article>
+<article class="pub" id="catchpv-hpv-treatment">
+<details>
+<summary>
+  <span class="pub__n mono">18</span>
+  <span class="pub__main">
+    <span class="pub__title">CATCHPV: A Minimally Invasive HPV Treatment</span>
+    <span class="pub__meta mono">Innovation Abstract (Synthetic Biology) &nbsp;·&nbsp; BIOS 2025</span>
+  </span>
+  <span class="pub__chev" aria-hidden="true">+</span>
+</summary>
+<div class="pub__body">
+<p class="pub__authors">Erin Larasati Angdika, Mariel Chrysantha Tampubolon, Jordan Ariel Indarta, Nicholas Sidik, Daniel Stenly Chandra, Rayhan Devishkar Al Mahmud, Claire Xing, Tangkas Eghan Pramudipta, Ruben Wijaya, Ketut Rayana Rahadiva Diana</p>
+<p class="pub__affil">International student collaboration, including Universitas Gadjah Mada</p>
+<h4 class="pub__h mono">Abstract</h4>
+<p>Human papillomavirus (HPV) is an etiological factor for cervical cancer, which remains the leading cause of cancer-related deaths among Indonesian women, with over 36,000 new cases and 21,000 deaths each year. HPV initiates infection through binding of its L1 capsid protein to heparan sulfate proteoglycans on epithelial cells. While many infections are benign, persistent high-risk types such as HPV-16 and HPV-18 cause about 70% of cases worldwide. Despite vaccination and screening, treatments such as surgical excision remain invasive, costly, and limited in accessibility.</p>
+<h4 class="pub__h mono">Proposed Innovation</h4>
+<p>CATCHPV is a minimally invasive treatment system designed to reduce cervical HPV load and the chance of progression to cancer. A genetically engineered M13 bacteriophage expresses anti-L1 antibody variable domains on its capsid proteins and is anchored to the surface of a cervical cap to capture HPV particles, which are then physically removed with the cap. A second engineered M13 bacteriophage targets infected cervical cells, where the presence of HPV activates the phage to eliminate the infected cell before it can become cancerous.</p>
+<h4 class="pub__h mono">Conclusion</h4>
+<p>By capturing virus particles and eliminating infected cells, CATCHPV offers a patient-friendly alternative to conventional HPV treatments. Its simple self-insertion procedure reduces discomfort and reliance on specialized clinical procedures, making it a potentially accessible complement to vaccination and screening programs, particularly in low-resource settings.</p>
+<p class="pub__kw mono">Keywords: HPV; cervical cancer; cervical cap; bacteriophage-based therapy; minimally invasive treatment</p>
+<p class="pub__ask">Abstract only. <a href="mailto:tangkaseghan12@gmail.com?subject=Full%20paper%20request&amp;body=Hi%20Tangkas,%20could%20you%20send%20the%20full%20paper%20for:%20catchpv-hpv-treatment">Request the full manuscript &rarr;</a></p>
+</div>
+</details>
+</article>
+</section>
+  </main>
+
+  <footer class="rfoot">
+    <p>Need the full manuscript, the dataset, or a co-author introduction? I usually reply within a day.</p>
+    <div class="rfoot__btns">
+      <a class="btn btn--primary" href="mailto:tangkaseghan12@gmail.com?subject=Research%20enquiry"><span>Email me</span><b>&rarr;</b></a>
+      <a class="btn btn--ghost" href="index.html"><span>Back to portfolio</span><b>&rarr;</b></a>
+    </div>
+  </footer>
+</body>
+</html>
